@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sift — Privacy Policy</title>
+<meta name="description" content="How Sift handles your screenshots: processed and discarded, never stored. Written to match what the app actually does.">
+<meta name="theme-color" content="#F25C6B">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <a class="brand" href="./">
+    <span class="mark" aria-hidden="true">S</span>
+    <span class="brand-name">Sift</span>
+  </a>
+  <p class="eyebrow">Legal</p>
+  <h1>Privacy Policy</h1>
+  <p class="dateline">Effective September 2026</p>
+  <nav class="langbar" aria-label="Language">
+    <span aria-current="page">English</span>
+    <a href="privacy-ar.html" lang="ar" dir="rtl">العربية</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="card">
+  <h2>The short version</h2>
+  <ul>
+    <li>There is <strong>no account</strong>. No name, no email address, no phone number, no password.</li>
+    <li>A screenshot is shrunk on your phone, sent to be read, and discarded the moment the answer comes back. <strong>No copy is kept on any server.</strong></li>
+    <li>What Sift read back — a title, a summary, a few extracted fields — is stored <strong>on your phone only</strong>.</li>
+    <li>The only thing our server keeps about you is a random identifier and a count of how many screenshots have been read for you.</li>
+    <li>There is <strong>no analytics SDK, no crash reporter, no advertising identifier and no tracking of any kind</strong>, across apps or otherwise.</li>
+    <li>Sift <strong>never deletes a photo without asking you first</strong>, every single time.</li>
+    <li>We do not sell your personal information, and we never have.</li>
+  </ul>
+</section>
+
+<h2>Who we are</h2>
+<p>Sift is developed and published by <strong>Eltayeb Mohammed</strong>. In this policy, "we" and "us" mean the publisher; "Sift" means the mobile app. For the purposes of the GDPR we are the data controller for the small amount of data described below.</p>
+<p>Contact for anything in this policy, including a request to delete your data: <a href="mailto:eaeltayb@gmail.com">eaeltayb@gmail.com</a></p>
+
+<h2>1. What we collect</h2>
+<p>We never ask you for personal information, and there is nothing in the app to enter it into. Here is the complete list of what exists.</p>
+
+<h3>An anonymous identifier</h3>
+<p>The first time Sift needs to have a screenshot read, it creates an anonymous session with our backend provider, Supabase. That session is a random identifier — a UUID such as <code>3f2a…</code> — with no name, email address or password attached to it. It is stored on your phone and it is the only identifier we hold about you. Every server-side record that concerns you is keyed on it and on nothing else.</p>
+<p>You can see your identifier at any time in <strong>Settings → Privacy</strong> in the app, and copy it with one tap. It is shown there so that a deletion request is something you can actually make — see section 6.</p>
+
+<h3>Screenshot content, while it is being read</h3>
+<p>When you have a screenshot read, the resized image and the language you want the answer in are sent to our server, which passes the image to Google's Gemini API. That is the whole request. The image exists only in the memory of that one request. Section 2 sets out every step.</p>
+
+<h3>Counts, for the free allowance and the paid plans</h3>
+<p>How many screenshots have been read for your identifier, which plan it is on, and the timestamps of recent requests. That is what section 4 describes in full.</p>
+
+<h3>What we do not collect</h3>
+<ul class="never">
+  <li>Your name, email address, phone number or any account credentials.</li>
+  <li>Your location. Sift never requests location access and contains no location code.</li>
+  <li>The GPS coordinates, EXIF metadata, filenames or creation dates attached to your photos. Screenshots are re-encoded before they are sent, so the metadata is not in what leaves the phone, and the original file's name and date never leave it at all.</li>
+  <li>Your contacts, your existing calendar events, your browsing, or anything you do in other apps.</li>
+  <li>Any advertising identifier (IDFA / GAID). Sift does not request App Tracking Transparency permission, because it has nothing to track with.</li>
+  <li>Your camera photos. Sift filters the library down to screenshots and never sends anything else.</li>
+</ul>
+
+<h2>2. How a screenshot is processed, exactly</h2>
+<ol class="steps">
+  <li><strong>On your phone.</strong> With your permission, Sift lists the images in your photo library and picks out the ones that are screenshots — by the "Screenshots" album, by the screenshot flag the operating system itself sets, by filename, or by an exact match against a known phone screen resolution. Nothing else is selected.</li>
+  <li><strong>On your phone.</strong> The screenshot is resized to 512 pixels wide and re-compressed as a JPEG. Your original photo is never modified. Because the image is re-encoded, any EXIF metadata — including location — is not carried into the copy.</li>
+  <li><strong>Leaving your phone.</strong> That small copy is encoded as text and placed in an encrypted HTTPS request together with one other thing: the language you want the answer in. The request is signed with your anonymous session so our server knows which allowance to charge. Up to 8 screenshots may travel in one request; the app sends 6.</li>
+  <li><strong>On our server.</strong> A Supabase Edge Function checks the session is valid, checks your rate limit, reserves the reads from your allowance, and forwards the image data to Google's Gemini API (model <code>gemini-3.1-flash-lite</code>). <strong>No identifier of yours is sent to Google</strong> — not your user id, not a device id, not an IP-derived token. Google sees the image, the instructions and the output language.</li>
+  <li><strong>Back from Google.</strong> The model returns a JSON description. Our server checks it is well formed and returns only that validated JSON to your phone. The raw model response never leaves the function.</li>
+  <li><strong>The image is gone.</strong> The image data is never written to a database, a storage bucket, a file, or a log. It exists only for the lifetime of that one request and is discarded when the request ends. If the model call fails, the reads are refunded and nothing is kept.</li>
+  <li><strong>On your phone.</strong> The result is saved in the app's own private storage, and nowhere else.</li>
+</ol>
+
+<p>For each screenshot, what comes back is: a type (event, place, product, info, receipt or junk), a confidence score, a short title, a one-line summary, the language of the text in the image, up to 500 characters of the text Sift could read — this is what makes search work — and whatever it found of a date, place name, address, price, link, code or Wi-Fi password, and merchant name.</p>
+
+<div class="note">
+  <p><strong>All of that is stored on your phone and nowhere else.</strong> Our server has no table for classification results. It forwards the model's answer to you and forgets it.</p>
+</div>
+
+<h2>3. What stays on your phone</h2>
+<p>Sift keeps everything below in the app's own private storage on your device. There is no database, no file cache and no copy of any image; it is all small pieces of text.</p>
+<ul>
+  <li><strong>Classification results</strong> — the title, summary, extracted fields and readable text described above, one entry per screenshot.</li>
+  <li><strong>Your decision on each item</strong> — acted on, skipped, kept, or deleted.</li>
+  <li><strong>Items you explicitly saved</strong> — places, products and notes, plus the identifier of any reminder you scheduled alongside them.</li>
+  <li><strong>A Deep Scan in progress</strong> — the list of screenshot ids in the run, so it can be resumed if the app is closed. Expires after 14 days.</li>
+  <li><strong>Settings</strong> — whether you have seen the intro, your language override, the last usage figure the server reported, and whether the first-run offer has been shown.</li>
+  <li><strong>Your anonymous session token</strong>, so the same allowance follows you across restarts.</li>
+</ul>
+<p>Removing an item from your library removes what Sift read; your photo is untouched. "Rescan library" clears your decisions. Uninstalling Sift deletes all of it from your phone.</p>
+
+<h2>4. What our server stores</h2>
+<p>Three tables. This is the complete list.</p>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Table</th><th>What is in it</th><th>Why it exists</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><code>usage_counts</code></td>
+      <td>Your anonymous identifier; reads used in total and this month; when the month resets; your tier (free or pro); whether you are on a trial; free reads granted; Deep Scan reads remaining and granted.</td>
+      <td>To enforce the free allowance and the paid limits. This has to live on a server — on the phone it could simply be edited.</td>
+    </tr>
+    <tr>
+      <td><code>rate_limit_events</code></td>
+      <td>Your anonymous identifier and a timestamp. Nothing else.</td>
+      <td>To stop a single device sending more than 60 requests a minute.</td>
+    </tr>
+    <tr>
+      <td><code>deep_scan_grants</code></td>
+      <td>The store's transaction id for a Deep Scan purchase, your anonymous identifier, how many reads it granted, and when.</td>
+      <td>So a pack you paid for is granted exactly once and can never be granted twice.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p>No screenshot, no image, no extracted text and no classification result is stored on our server, in any table, bucket or file.</p>
+
+<h3>Server logs</h3>
+<p>Our backend provider keeps operational logs of the functions that run. For the function that classifies screenshots, those logs record the number of images in a request, the size of the request in megabytes, the requested output language and memory figures — <strong>no image data, no extracted text, and no user identifier</strong>. The two billing functions do log the anonymous identifier, because a purchase that fails to grant has to be traceable to the person it failed for. Supabase also keeps its own platform-level logs, which include the network address a request came from, under <a href="https://supabase.com/privacy" rel="noopener">its own privacy policy</a>.</p>
+
+<h2>5. Third parties who process data for us</h2>
+<p>Sift uses four external services. Nothing else. There is no analytics provider, no crash reporter, no advertising network and no data broker in the app or on our server.</p>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Service</th><th>What it receives</th><th>Their policy</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Google Gemini API</strong><br>(Google LLC)</td>
+      <td>The resized screenshot, the reading instructions, and the language to answer in. No identifier of any kind is attached. Google does not receive your anonymous id, a device id, or anything that links one request to another.</td>
+      <td><a href="https://policies.google.com/privacy" rel="noopener">Google Privacy Policy</a> · <a href="https://ai.google.dev/gemini-api/terms" rel="noopener">Gemini API Terms</a></td>
+    </tr>
+    <tr>
+      <td><strong>Supabase</strong><br>(Supabase, Inc.)</td>
+      <td>Hosts our anonymous authentication, the three tables above and the functions that run. It handles every request, so it sees the screenshot data in transit while a request is being served, and the network address the request came from.</td>
+      <td><a href="https://supabase.com/privacy" rel="noopener">Supabase Privacy Policy</a></td>
+    </tr>
+    <tr>
+      <td><strong>RevenueCat</strong><br>(RevenueCat, Inc.)</td>
+      <td>Manages subscriptions and the Deep Scan pack. We configure it with your anonymous Supabase identifier as its App User ID, so a purchase can be matched to the right allowance. It also receives purchase and receipt data from the App Store, and the SDK collects device and app information as described in its policy.</td>
+      <td><a href="https://www.revenuecat.com/privacy" rel="noopener">RevenueCat Privacy Policy</a></td>
+    </tr>
+    <tr>
+      <td><strong>Apple</strong><br>(Apple Inc.)</td>
+      <td>Takes the payment and holds the subscription. We never see your payment details, your Apple ID or your name — the App Store handles all of it and tells us only that a purchase is valid.</td>
+      <td><a href="https://www.apple.com/legal/privacy/" rel="noopener">Apple Privacy Policy</a></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p>We have no other processors, and we do not sell or share your data with anyone for advertising, profiling or any other purpose.</p>
+
+<h2>6. Retention and deletion</h2>
+<ul>
+  <li><strong>Screenshots and images:</strong> not retained at all. Discarded at the end of the request that carried them.</li>
+  <li><strong>Everything Sift read back:</strong> kept on your phone for as long as you keep it. Delete an item in the app to remove it; uninstall Sift to remove all of it.</li>
+  <li><strong>Rate-limit timestamps:</strong> only a one-minute window is ever used, and rows older than an hour are pruned.</li>
+  <li><strong>Usage counts and purchase grants:</strong> kept while your anonymous identifier exists, because they are what stop a paid pack being granted twice and what carry your remaining reads. They are numbers keyed to a random id — there is nothing in them that identifies a person.</li>
+</ul>
+
+<h3>How to have your data deleted</h3>
+<p>Because there is no account, we have no way to find your record unless you tell us which one it is. So:</p>
+<ol class="steps">
+  <li>Open Sift and go to <strong>Settings → Privacy</strong>. Tap your anonymous identifier to copy it.</li>
+  <li>Email it to <a href="mailto:eaeltayb@gmail.com">eaeltayb@gmail.com</a> and say you want it deleted.</li>
+  <li>We delete the rows keyed on that identifier — your usage counts, rate-limit timestamps and purchase grants — and the anonymous auth record itself, within 30 days, and confirm by reply.</li>
+</ol>
+<p>Deleting the server-side record does not delete what is on your phone, and it does not cancel a subscription. Uninstalling the app handles the first; the <a href="support.html">Support page</a> explains the second. If you delete your server-side record while a Deep Scan pack still has reads left, those reads are gone with it.</p>
+
+<h2>7. Permissions, and why each one is needed</h2>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Permission</th><th>When it is asked for</th><th>What it is used for</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Photos</strong><br>(read access)</td>
+      <td>When you first let Sift look at your library.</td>
+      <td>To find the screenshots in your photo library, and — only when you confirm it — to delete one. Sift requests image access only, never video, and never asks for the location metadata attached to your photos. If you grant limited access, Sift sees only the photos you picked.</td>
+    </tr>
+    <tr>
+      <td><strong>Calendar</strong></td>
+      <td>At the moment you tap "Add to calendar" on a screenshot — never before.</td>
+      <td>To write one event, with the title, date, location and link from that screenshot. Sift does not read your existing events, and never changes or deletes anything already in your calendar.</td>
+    </tr>
+    <tr>
+      <td><strong>Notifications</strong></td>
+      <td>At the moment you set a reminder — never on launch.</td>
+      <td>To schedule a local reminder on your phone. These are alarms your phone sets for itself: Sift has no push server, registers no push token, and cannot send you anything.</td>
+    </tr>
+    <tr>
+      <td><strong>Location</strong></td>
+      <td><strong>Never asked.</strong></td>
+      <td>Sift does not use location. When a screenshot contains an address, tapping it opens your maps app with that address as a search — your maps app, not Sift, decides what to do with your location from there.</td>
+    </tr>
+    <tr>
+      <td><strong>Tracking (ATT)</strong></td>
+      <td><strong>Never asked.</strong></td>
+      <td>Sift does not track you across apps or websites and has no advertising identifier, so there is nothing to ask permission for.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p>You can change or withdraw any of these at any time in your phone's Settings. Sift keeps working with them withdrawn — it just cannot do the thing that needed them.</p>
+
+<h3>Deleting photos</h3>
+<p>Sift can delete a screenshot from your photo library, and it does so only when you tap a delete action and then confirm it in your phone's own dialog. That confirmation appears every single time; there is no setting to turn it off, and no other action in the app can reach your photos. Deleting a photo cannot be undone from inside Sift — on iOS it moves to Recently Deleted.</p>
+
+<h2>8. Children's privacy</h2>
+<p>Sift is not directed at children under 13, and we do not knowingly collect personal information from them. Since the app has no account, no sign-up and no way to enter personal details, there is nothing for a child to submit. If you believe a child has used Sift and you want the associated anonymous record removed, follow the deletion steps in section 6 and we will remove it.</p>
+
+<h2>9. Your rights</h2>
+<p>Depending on where you live, you may have the right to access, correct, delete, or export your data, to object to or restrict how it is processed, and to complain to a data protection authority. In the EU and UK these are GDPR rights; in California they are CCPA/CPRA rights; in Brazil they are LGPD rights.</p>
+<p>In practice, exercising them is short, because there is very little to exercise them against:</p>
+<ul>
+  <li><strong>Access / export:</strong> everything Sift read is already on your phone, visible in the app. The server holds only the counters in section 4. Email us with your identifier and we will send you exactly what those rows contain.</li>
+  <li><strong>Correction:</strong> the server-side data is counters; if a count is wrong, tell us and we will fix it.</li>
+  <li><strong>Deletion:</strong> follow section 6.</li>
+  <li><strong>Objection / restriction:</strong> stop having screenshots read, or uninstall the app. No processing happens except when you ask for it.</li>
+  <li><strong>Sale of personal information:</strong> we do not sell it, and we do not share it for cross-context behavioural advertising. There is no opt-out to offer because there is nothing to opt out of.</li>
+</ul>
+<p>Our lawful basis under the GDPR is performance of a contract — you asked us to read a screenshot, so we read it — and our legitimate interest in enforcing usage limits and preventing abuse. Data is processed in the United States and other countries where our processors operate.</p>
+
+<h2>10. Security</h2>
+<p>Everything between your phone and our server, and between our server and Google, travels over HTTPS. Our API key for Google's model lives only as a server-side secret and is never in the app. Server-side records are protected by row-level security so that one anonymous identifier cannot read or change another's, and the counters that decide your allowance can be written only by the server, never by a phone. No system is perfectly secure, but the most effective protection here is structural: we do not store your screenshots, so there is no store of them to breach.</p>
+
+<h2>11. Changes to this policy</h2>
+<p>If we change how Sift handles data, we will update this page and change the effective date at the top. Changes that materially affect what leaves your phone will be announced in the app before they take effect. The current version is always at this address.</p>
+
+<h2>12. Contact</h2>
+<p>Eltayeb Mohammed<br>
+<a href="mailto:eaeltayb@gmail.com">eaeltayb@gmail.com</a></p>
+<p>Write in English or Arabic. We answer every email about this policy, and every deletion request.</p>
+
+</main>
+
+<footer class="foot">
+  <nav>
+    <a href="./">Home</a>
+    <a href="support.html">Support</a>
+    <a href="privacy-ar.html" lang="ar">العربية</a>
+  </nav>
+  <p>Sift — Eltayeb Mohammed. Effective September 2026.</p>
+</footer>
+
+</div>
+</body>
+</html>

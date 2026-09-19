@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sift — Support</title>
+<meta name="description" content="Help with Sift: restoring purchases, cancelling a subscription, what happens to your screenshots, and data deletion.">
+<meta name="theme-color" content="#F25C6B">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <a class="brand" href="./">
+    <span class="mark" aria-hidden="true">S</span>
+    <span class="brand-name">Sift</span>
+  </a>
+  <p class="eyebrow">Help</p>
+  <h1>Support</h1>
+  <p class="dateline">Written and answered by one person. Expect a reply within two business days.</p>
+</header>
+
+<main>
+
+<section class="card">
+  <h2>Contact</h2>
+  <p>Email <a href="mailto:eaeltayb@gmail.com">eaeltayb@gmail.com</a> with what happened and which iPhone and iOS version you are on. If it is about billing or data deletion, include your anonymous identifier from <strong>Settings → Privacy</strong> in the app — without it we cannot find your record.</p>
+</section>
+
+<h2>Frequently asked</h2>
+
+<div class="faq">
+
+  <details>
+    <summary>I paid on another phone. How do I restore my purchase?</summary>
+    <div class="answer">
+      <p>Open Sift, go to <strong>Settings → Plan → Restore purchases</strong>. Make sure you are signed in to the same Apple ID that made the purchase. Sift asks the App Store to re-read the receipt for that Apple ID and your plan comes back within a few seconds.</p>
+      <p>If it says nothing was found, check the Apple ID under <strong>iOS Settings → [your name] → Media &amp; Purchases</strong>. If it is the right one and restore still finds nothing, email us with your identifier and the approximate date of purchase.</p>
+      <p>One thing to know: your reads are tied to the anonymous identifier on the phone, not to your Apple ID. Restoring on a new phone restores the subscription. If you had a Deep Scan pack with reads left on an old phone, email us and we will move the balance.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>How do I cancel my subscription?</summary>
+    <div class="answer">
+      <p>Subscriptions are handled by Apple, so they are cancelled in iOS Settings, not in Sift:</p>
+      <ol class="steps">
+        <li>Open the <strong>Settings</strong> app on your iPhone.</li>
+        <li>Tap your name at the top, then <strong>Subscriptions</strong>.</li>
+        <li>Tap <strong>Sift</strong>, then <strong>Cancel Subscription</strong>.</li>
+      </ol>
+      <p>You keep your paid reads until the end of the period you have already paid for — cancelling does not cut you off early. If you cancel during a free trial, cancel at least 24 hours before it ends to avoid being charged.</p>
+      <p>Refunds are Apple's to give, not ours. Request one at <a href="https://reportaproblem.apple.com" rel="noopener">reportaproblem.apple.com</a>.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>What actually happens to my screenshots?</summary>
+    <div class="answer">
+      <p>Each screenshot is resized on your phone, sent over an encrypted connection to be read, and discarded the moment the answer comes back. No copy is written to any database, storage bucket, file or log. Nothing is kept to train anything.</p>
+      <p>What comes back — a title, a summary, the text Sift could read, and details like a date, address or price — is stored on your phone only. Our server has no table for it.</p>
+      <p>The reading itself is done by Google's Gemini model, and no identifier of yours goes with the image: not your user id, not a device id. The full detail is in the <a href="privacy.html">Privacy Policy</a>.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Will Sift delete my photos?</summary>
+    <div class="answer">
+      <p>Only when you tap a delete action and then confirm it in your phone's own dialog. That confirmation appears every single time and cannot be switched off. Skipping a screenshot, removing an item from your library, or rescanning never touches your photo library.</p>
+      <p>A deleted screenshot goes to <strong>Recently Deleted</strong> in the Photos app on iOS, where you can recover it for 30 days.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>How do I request deletion of my data?</summary>
+    <div class="answer">
+      <ol class="steps">
+        <li>In Sift, go to <strong>Settings → Privacy</strong> and tap your anonymous identifier to copy it.</li>
+        <li>Email it to <a href="mailto:eaeltayb@gmail.com">eaeltayb@gmail.com</a> and say you want it deleted.</li>
+        <li>We delete every row keyed on that identifier — usage counts, rate-limit timestamps, purchase grants — and the anonymous record itself, within 30 days, and confirm by reply.</li>
+      </ol>
+      <p>To remove what is on your phone, delete items in the app or uninstall Sift — uninstalling removes all of it at once. Deleting your server-side record does not cancel a subscription, and any Deep Scan reads still on the balance are lost with it.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Sift is not finding my screenshots.</summary>
+    <div class="answer">
+      <p>Check <strong>iOS Settings → Sift → Photos</strong>. If it is set to <em>Limited Access</em>, Sift can only see the photos you picked — use "Select more photos" in the app, or switch it to full access.</p>
+      <p>Sift identifies screenshots by the Screenshots album, by the flag iOS itself sets on a screenshot, by filename, or by an exact screen-resolution match. Images saved from other apps or edited copies sometimes lose all four signals. If you have screenshots that Sift consistently misses, email us and say where they came from.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>I ran out of reads. What are the limits?</summary>
+    <div class="answer">
+      <p>The free tier starts with 30 reads and adds 20 each month. A subscription gives 500 reads a month; during a free trial it is 60 reads for the whole trial window, which the paywall says before you subscribe. A Deep Scan pack is a one-time purchase that grants enough reads for your whole library and is spent only after your plan's reads are used up.</p>
+      <p>A read that fails is never charged — if the model call does not come back, the reads go straight back onto your balance.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Sift is in the wrong language.</summary>
+    <div class="answer">
+      <p>Go to <strong>Settings → Language</strong> and pick one, or choose "Match device". Switching into or out of Arabic changes the layout direction, which only takes effect when the app is reopened — Sift tells you when that is needed.</p>
+    </div>
+  </details>
+
+</div>
+
+<h2>Still stuck?</h2>
+<p>Email <a href="mailto:eaeltayb@gmail.com">eaeltayb@gmail.com</a>. Include your iPhone model, your iOS version, and what you expected to happen. Screenshots of the problem help — we will not ask for the screenshots Sift is reading.</p>
+
+</main>
+
+<footer class="foot">
+  <nav>
+    <a href="./">Home</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="privacy-ar.html" lang="ar">العربية</a>
+  </nav>
+  <p>Sift — Eltayeb Mohammed. <a href="mailto:eaeltayb@gmail.com">eaeltayb@gmail.com</a></p>
+</footer>
+
+</div>
+</body>
+</html>
