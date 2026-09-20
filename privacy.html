@@ -54,6 +54,9 @@
 <h3>Screenshot content, while it is being read</h3>
 <p>When you have a screenshot read, the resized image and the language you want the answer in are sent to our server, which passes the image to Google's Gemini API. That is the whole request. The image exists only in the memory of that one request. Section 2 sets out every step.</p>
 
+<h3>How many screenshots are in your library — only if you buy a Deep Scan</h3>
+<p>A Deep Scan pack grants enough reads for your whole library, and only your phone can know how big that is. So when you buy one, the app reports a single number to our server: how many screenshots it found. That number, rounded up to a minimum of 3,000, becomes the size of your pack and is stored against the purchase. Nothing else about your library goes with it — no filenames, no dates, no content. If you never buy a Deep Scan, this number is never sent.</p>
+
 <h3>Counts, for the free allowance and the paid plans</h3>
 <p>How many screenshots have been read for your identifier, which plan it is on, and the timestamps of recent requests. That is what section 4 describes in full.</p>
 
@@ -114,7 +117,7 @@
     </tr>
     <tr>
       <td><code>deep_scan_grants</code></td>
-      <td>The store's transaction id for a Deep Scan purchase, your anonymous identifier, how many reads it granted, and when.</td>
+      <td>The store's transaction id for a Deep Scan purchase, your anonymous identifier, how many reads it granted — which is the size of your screenshot library, or 3,000, whichever is larger — and when.</td>
       <td>So a pack you paid for is granted exactly once and can never be granted twice.</td>
     </tr>
   </tbody>
@@ -143,7 +146,7 @@
     </tr>
     <tr>
       <td><strong>RevenueCat</strong><br>(RevenueCat, Inc.)</td>
-      <td>Manages subscriptions and the Deep Scan pack. We configure it with your anonymous Supabase identifier as its App User ID, so a purchase can be matched to the right allowance. It also receives purchase and receipt data from the App Store, and the SDK collects device and app information as described in its policy.</td>
+      <td>Manages subscriptions and the Deep Scan pack. We configure it with your anonymous Supabase identifier as its App User ID, so a purchase can be matched to the right allowance. It also receives purchase and receipt data from the App Store, and the SDK collects device and app information as described in its policy. When the paywall is shown, the app passes it the number of screenshots in your library and how many are unread, so it can say what a pack would be worth to you rather than quoting a generic figure.</td>
       <td><a href="https://www.revenuecat.com/privacy" rel="noopener">RevenueCat Privacy Policy</a></td>
     </tr>
     <tr>
@@ -160,7 +163,7 @@
 <ul>
   <li><strong>Screenshots and images:</strong> not retained at all. Discarded at the end of the request that carried them.</li>
   <li><strong>Everything Sift read back:</strong> kept on your phone for as long as you keep it. Delete an item in the app to remove it; uninstall Sift to remove all of it.</li>
-  <li><strong>Rate-limit timestamps:</strong> only a one-minute window is ever used, and rows older than an hour are pruned.</li>
+  <li><strong>Rate-limit timestamps:</strong> only a one-minute window is ever read, so rows older than that have no further use and are deleted on a routine sweep. Each one holds nothing but your identifier and a time.</li>
   <li><strong>Usage counts and purchase grants:</strong> kept while your anonymous identifier exists, because they are what stop a paid pack being granted twice and what carry your remaining reads. They are numbers keyed to a random id — there is nothing in them that identifies a person.</li>
 </ul>
 
