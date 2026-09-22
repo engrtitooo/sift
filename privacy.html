@@ -130,7 +130,7 @@
 <p>Our backend provider keeps operational logs of the functions that run. For the function that classifies screenshots, those logs record the number of images in a request, the size of the request in megabytes, the requested output language and memory figures — <strong>no image data, no extracted text, and no user identifier</strong>. The two billing functions do log the anonymous identifier, because a purchase that fails to grant has to be traceable to the person it failed for. Supabase also keeps its own platform-level logs, which include the network address a request came from, under <a href="https://supabase.com/privacy" rel="noopener">its own privacy policy</a>.</p>
 
 <h2>5. Third parties who process data for us</h2>
-<p>Sift uses four external services. Nothing else. There is no analytics provider, no crash reporter, no advertising network and no data broker in the app or on our server.</p>
+<p>Sift uses five external services. Nothing else. There is no analytics provider, no crash reporter, no advertising network and no data broker in the app or on our server. The one piece of diagnostic data that ever leaves your phone is described in the Expo row below: the error message from a failed start, sent with the next update check.</p>
 <div class="tablewrap">
 <table>
   <thead><tr><th>Service</th><th>What it receives</th><th>Their policy</th></tr></thead>
@@ -154,6 +154,11 @@
       <td><strong>Apple</strong><br>(Apple Inc.)</td>
       <td>Takes the payment and holds the subscription. We never see your payment details, your Apple ID or your name — the App Store handles all of it and tells us only that a purchase is valid.</td>
       <td><a href="https://www.apple.com/legal/privacy/" rel="noopener">Apple Privacy Policy</a></td>
+    </tr>
+    <tr>
+      <td><strong>Expo (EAS Update)</strong><br>(650 Industries, Inc.)</td>
+      <td>When Sift starts, it asks Expo's update server whether a newer version of the app's code is available. That request carries a random installation id created by the update library — not your Sift identifier — along with the platform, the app's runtime version and update channel, and the ids of the installed update. If the app failed to start the previous time, the request also carries that error message, at most 1,024 characters. Expo sees the network address the request came from. No screenshot, extracted text or usage count is ever sent to Expo.</td>
+      <td><a href="https://expo.dev/privacy" rel="noopener">Expo Privacy Policy</a></td>
     </tr>
   </tbody>
 </table>
