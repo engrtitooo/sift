@@ -32,6 +32,7 @@
   <ul>
     <li>There is <strong>no account</strong>. No name, no email address, no phone number, no password.</li>
     <li>A screenshot is shrunk on your phone and sent to our server, which passes it to Google's Gemini AI to be read. <strong>Our servers never store it</strong> — it is discarded the moment the answer comes back.</li>
+    <li>We use Google's <strong>paid</strong> Gemini API. Under its terms, Google does <strong>not use your screenshots or the answers to train or improve its models</strong>.</li>
     <li>What Sift read back — a title, a summary, a few extracted fields — is stored <strong>on your phone only</strong>.</li>
     <li>The only thing our server keeps about you is a random identifier and a count of how many screenshots have been read for you.</li>
     <li>There is <strong>no analytics SDK, no crash reporter, no advertising identifier and no tracking of any kind</strong>, across apps or otherwise.</li>
@@ -136,7 +137,7 @@
   <tbody>
     <tr>
       <td><strong>Google Gemini API</strong><br>(Google LLC)</td>
-      <td>The resized screenshot, the reading instructions, and the language to answer in. No identifier of any kind is attached. Google does not receive your anonymous id, a device id, or anything that links one request to another.</td>
+      <td>The resized screenshot, the reading instructions, and the language to answer in. No identifier of any kind is attached. Google does not receive your anonymous id, a device id, or anything that links one request to another. We use the paid tier of the Gemini API: under its terms, Google does not use the images or the answers to train or improve its products, and keeps them only for a limited period to detect abuse and meet legal obligations.</td>
       <td><a href="https://policies.google.com/privacy" rel="noopener">Google Privacy Policy</a> · <a href="https://ai.google.dev/gemini-api/terms" rel="noopener">Gemini API Terms</a></td>
     </tr>
     <tr>
@@ -161,7 +162,7 @@
 
 <h2>6. Retention and deletion</h2>
 <ul>
-  <li><strong>Screenshots and images:</strong> not retained on our servers. Discarded at the end of the request that carried them. Google's handling is governed by its Gemini API Terms (section 5).</li>
+  <li><strong>Screenshots and images:</strong> not retained on our servers. Discarded at the end of the request that carried them. Because we use the paid Gemini API, Google does not use them to train its models; it may keep them for a limited period solely to detect abuse and meet legal obligations, under its Gemini API Terms (section 5).</li>
   <li><strong>Everything Sift read back:</strong> kept on your phone for as long as you keep it. Delete an item in the app to remove it; uninstall Sift to remove all of it.</li>
   <li><strong>Rate-limit timestamps:</strong> only a one-minute window is ever read, so rows older than that have no further use and are deleted on a routine sweep. Each one holds nothing but your identifier and a time.</li>
   <li><strong>Usage counts and purchase grants:</strong> kept while your anonymous identifier exists, because they are what stop a paid pack being granted twice and what carry your remaining reads. They are numbers keyed to a random id — there is nothing in them that identifies a person.</li>
