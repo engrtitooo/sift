@@ -27,8 +27,8 @@ Those are the two URLs App Store Connect asks for.
 
 Every data-handling claim on these pages was checked against the Sift source
 code rather than written from what the app is supposed to do. The short
-version: no account, screenshots are processed and discarded rather than
-stored, results stay on the device, and there is no analytics SDK, no crash
+version: no account, screenshots are sent to our server and Google's Gemini API to be read, then
+discarded rather than stored on our servers, results stay on the device, and there is no analytics SDK, no crash
 reporter and no tracking of any kind.
 
 Developer: Eltayeb Mohammed · <eaeltayb@gmail.com>

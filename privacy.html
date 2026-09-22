@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sift — Privacy Policy</title>
-<meta name="description" content="How Sift handles your screenshots: processed and discarded, never stored. Written to match what the app actually does.">
+<meta name="description" content="How Sift handles your screenshots: read by Google's Gemini AI via our server, never stored on our servers. Written to match what the app actually does.">
 <meta name="theme-color" content="#F25C6B">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -18,7 +18,7 @@
   </a>
   <p class="eyebrow">Legal</p>
   <h1>Privacy Policy</h1>
-  <p class="dateline">Effective September 2026</p>
+  <p class="dateline">Effective 22 September 2026</p>
   <nav class="langbar" aria-label="Language">
     <span aria-current="page">English</span>
     <a href="privacy-ar.html" lang="ar" dir="rtl">العربية</a>
@@ -31,7 +31,7 @@
   <h2>The short version</h2>
   <ul>
     <li>There is <strong>no account</strong>. No name, no email address, no phone number, no password.</li>
-    <li>A screenshot is shrunk on your phone, sent to be read, and discarded the moment the answer comes back. <strong>No copy is kept on any server.</strong></li>
+    <li>A screenshot is shrunk on your phone and sent to our server, which passes it to Google's Gemini AI to be read. <strong>Our servers never store it</strong> — it is discarded the moment the answer comes back.</li>
     <li>What Sift read back — a title, a summary, a few extracted fields — is stored <strong>on your phone only</strong>.</li>
     <li>The only thing our server keeps about you is a random identifier and a count of how many screenshots have been read for you.</li>
     <li>There is <strong>no analytics SDK, no crash reporter, no advertising identifier and no tracking of any kind</strong>, across apps or otherwise.</li>
@@ -48,7 +48,7 @@
 <p>We never ask you for personal information, and there is nothing in the app to enter it into. Here is the complete list of what exists.</p>
 
 <h3>An anonymous identifier</h3>
-<p>The first time Sift needs to have a screenshot read, it creates an anonymous session with our backend provider, Supabase. That session is a random identifier — a UUID such as <code>3f2a…</code> — with no name, email address or password attached to it. It is stored on your phone and it is the only identifier we hold about you. Every server-side record that concerns you is keyed on it and on nothing else.</p>
+<p>When Sift first starts with a network connection — or, at the latest, the first time it needs a screenshot read — it creates an anonymous session with our backend provider, Supabase. That session is a random identifier — a UUID such as <code>3f2a…</code> — with no name, email address or password attached to it. It is stored on your phone and it is the only identifier we hold about you. Every server-side record that concerns you is keyed on it and on nothing else.</p>
 <p>You can see your identifier at any time in <strong>Settings → Privacy</strong> in the app, and copy it with one tap. It is shown there so that a deletion request is something you can actually make — see section 6.</p>
 
 <h3>Screenshot content, while it is being read</h3>
@@ -77,7 +77,7 @@
   <li><strong>Leaving your phone.</strong> That small copy is encoded as text and placed in an encrypted HTTPS request together with one other thing: the language you want the answer in. The request is signed with your anonymous session so our server knows which allowance to charge. Up to 8 screenshots may travel in one request; the app sends 6.</li>
   <li><strong>On our server.</strong> A Supabase Edge Function checks the session is valid, checks your rate limit, reserves the reads from your allowance, and forwards the image data to Google's Gemini API (model <code>gemini-3.1-flash-lite</code>). <strong>No identifier of yours is sent to Google</strong> — not your user id, not a device id, not an IP-derived token. Google sees the image, the instructions and the output language.</li>
   <li><strong>Back from Google.</strong> The model returns a JSON description. Our server checks it is well formed and returns only that validated JSON to your phone. The raw model response never leaves the function.</li>
-  <li><strong>The image is gone.</strong> The image data is never written to a database, a storage bucket, a file, or a log. It exists only for the lifetime of that one request and is discarded when the request ends. If the model call fails, the reads are refunded and nothing is kept.</li>
+  <li><strong>The image is gone from our server.</strong> Our server never writes the image data to a database, a storage bucket, a file, or a log. It exists only for the lifetime of that one request and is discarded when the request ends. If the model call fails, the reads are refunded and nothing is kept. How Google handles the image it receives is governed by the Gemini API Terms linked in section 5.</li>
   <li><strong>On your phone.</strong> The result is saved in the app's own private storage, and nowhere else.</li>
 </ol>
 
@@ -161,7 +161,7 @@
 
 <h2>6. Retention and deletion</h2>
 <ul>
-  <li><strong>Screenshots and images:</strong> not retained at all. Discarded at the end of the request that carried them.</li>
+  <li><strong>Screenshots and images:</strong> not retained on our servers. Discarded at the end of the request that carried them. Google's handling is governed by its Gemini API Terms (section 5).</li>
   <li><strong>Everything Sift read back:</strong> kept on your phone for as long as you keep it. Delete an item in the app to remove it; uninstall Sift to remove all of it.</li>
   <li><strong>Rate-limit timestamps:</strong> only a one-minute window is ever read, so rows older than that have no further use and are deleted on a routine sweep. Each one holds nothing but your identifier and a time.</li>
   <li><strong>Usage counts and purchase grants:</strong> kept while your anonymous identifier exists, because they are what stop a paid pack being granted twice and what carry your remaining reads. They are numbers keyed to a random id — there is nothing in them that identifies a person.</li>
@@ -249,7 +249,7 @@
     <a href="support.html">Support</a>
     <a href="privacy-ar.html" lang="ar">العربية</a>
   </nav>
-  <p>Sift — Eltayeb Mohammed. Effective September 2026.</p>
+  <p>Sift — Eltayeb Mohammed. Effective 22 September 2026.</p>
 </footer>
 
 </div>
