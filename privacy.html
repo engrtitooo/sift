@@ -35,7 +35,7 @@
     <li>We use Google's <strong>paid</strong> Gemini API. Under its terms, Google does <strong>not use your screenshots or the answers to train or improve its models</strong>.</li>
     <li>What Sift read back — a title, a summary, a few extracted fields — is stored <strong>on your phone only</strong>.</li>
     <li>The only thing our server keeps about you is a random identifier and a count of how many screenshots have been read for you.</li>
-    <li>There is <strong>no analytics SDK, no crash reporter, no advertising identifier and no tracking of any kind</strong>, across apps or otherwise.</li>
+    <li>There is <strong>no analytics SDK, no advertising identifier and no tracking of any kind</strong>, across apps or otherwise. The only diagnostic data that ever leaves your phone is the startup error message sent to Expo, described in section 5.</li>
     <li>Sift <strong>never deletes a photo without asking you first</strong>, every single time.</li>
     <li>We do not sell your personal information, and we never have.</li>
   </ul>
@@ -65,7 +65,7 @@
 <ul class="never">
   <li>Your name, email address, phone number or any account credentials.</li>
   <li>Your location. Sift never requests location access and contains no location code.</li>
-  <li>The GPS coordinates, EXIF metadata, filenames or creation dates attached to your photos. Screenshots are re-encoded before they are sent, so the metadata is not in what leaves the phone, and the original file's name and date never leave it at all.</li>
+  <li>The GPS coordinates, EXIF metadata, filenames or creation dates attached to your photos. Before a screenshot is sent, it is re-encoded as a new JPEG, which does not carry the original file's EXIF metadata, including location. The original file's name and date never leave the phone at all.</li>
   <li>Your contacts, your existing calendar events, your browsing, or anything you do in other apps.</li>
   <li>Any advertising identifier (IDFA / GAID). Sift does not request App Tracking Transparency permission, because it has nothing to track with.</li>
   <li>Your camera photos. Sift filters the library down to screenshots and never sends anything else.</li>
@@ -74,7 +74,7 @@
 <h2>2. How a screenshot is processed, exactly</h2>
 <ol class="steps">
   <li><strong>On your phone.</strong> With your permission, Sift lists the images in your photo library and picks out the ones that are screenshots — by the "Screenshots" album, by the screenshot flag the operating system itself sets, by filename, or by an exact match against a known phone screen resolution. Nothing else is selected.</li>
-  <li><strong>On your phone.</strong> The screenshot is resized to 512 pixels wide and re-compressed as a JPEG. Your original photo is never modified. Because the image is re-encoded, any EXIF metadata — including location — is not carried into the copy.</li>
+  <li><strong>On your phone.</strong> The screenshot is resized to 512 pixels wide and re-compressed as a JPEG. Your original photo is never modified. The re-encoded JPEG is a new file, which does not carry the original file's EXIF metadata, including location.</li>
   <li><strong>Leaving your phone.</strong> That small copy is encoded as text and placed in an encrypted HTTPS request together with one other thing: the language you want the answer in. The request is signed with your anonymous session so our server knows which allowance to charge. Up to 8 screenshots may travel in one request; the app sends 6.</li>
   <li><strong>On our server.</strong> A Supabase Edge Function checks the session is valid, checks your rate limit, reserves the reads from your allowance, and forwards the image data to Google's Gemini API (model <code>gemini-3.1-flash-lite</code>). <strong>No identifier of yours is sent to Google</strong> — not your user id, not a device id, not an IP-derived token. Google sees the image, the instructions and the output language.</li>
   <li><strong>Back from Google.</strong> The model returns a JSON description. Our server checks it is well formed and returns only that validated JSON to your phone. The raw model response never leaves the function.</li>
