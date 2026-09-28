@@ -1,57 +1,97 @@
 <!doctype html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" data-home="root">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sift</title>
+<title>Sift — Your screenshots, sorted.</title>
 <meta name="description" content="Sift reads the screenshots already on your phone and tells you what is inside them.">
 <meta name="theme-color" content="#F25C6B">
-<link rel="stylesheet" href="style.css">
+<link rel="canonical" href="https://engrtitooo.github.io/sift/">
+<link rel="alternate" hreflang="en" href="https://engrtitooo.github.io/sift/">
+<link rel="alternate" hreflang="ar" href="https://engrtitooo.github.io/sift/ar/">
+<link rel="alternate" hreflang="es" href="https://engrtitooo.github.io/sift/es/">
+<link rel="alternate" hreflang="pt-BR" href="https://engrtitooo.github.io/sift/pt/">
+<link rel="alternate" hreflang="fr" href="https://engrtitooo.github.io/sift/fr/">
+<link rel="alternate" hreflang="x-default" href="https://engrtitooo.github.io/sift/">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/lang.js"></script>
 </head>
 <body>
 <div class="wrap">
 
-  <header class="masthead">
+<section class="chooser" aria-labelledby="chooser-title">
+  <p class="chooser-title" id="chooser-title">Choose your language</p>
+  <p class="chooser-sub"><span lang="ar" dir="rtl">اختر لغتك</span> · <span lang="es">Elige tu idioma</span> · <span lang="pt-BR">Escolha seu idioma</span> · <span lang="fr">Choisissez votre langue</span></p>
+  <div class="chooser-options">
+    <a href="./?lang=en" hreflang="en" lang="en" data-lang="en">English</a>
+    <a href="ar/" hreflang="ar" lang="ar" dir="rtl" data-lang="ar">العربية</a>
+    <a href="es/" hreflang="es" lang="es" data-lang="es">Español</a>
+    <a href="pt/" hreflang="pt-BR" lang="pt-BR" data-lang="pt">Português</a>
+    <a href="fr/" hreflang="fr" lang="fr" data-lang="fr">Français</a>
+  </div>
+</section>
+<header class="masthead">
+  <div class="topbar">
     <a class="brand" href="./">
       <span class="mark" aria-hidden="true">S</span>
       <span class="brand-name">Sift</span>
     </a>
-    <h1>Your screenshots, sorted.</h1>
-    <p class="lede">Sift reads the screenshots already on your phone — the tickets, the addresses, the Wi-Fi passwords, the things you meant to buy — and turns each one into something you can act on. What it reads stays on your phone.</p>
-  </header>
-
-  <main>
-    <div class="actions">
-      <a class="btn primary" href="privacy.html">Privacy Policy</a>
-      <a class="btn" href="terms.html">Terms of Use</a>
-      <a class="btn" href="support.html">Support</a>
-    </div>
-
-    <h2>What it does</h2>
-    <ul>
-      <li>Finds the screenshots in your photo library and leaves your camera photos alone.</li>
-      <li>Reads each one and gives you a title, a summary and the useful details — a date, a place, a price, a link, a code.</li>
-      <li>Offers one action per screenshot: add to calendar, save the place, track the product, set a reminder, keep a note, or delete the picture.</li>
-      <li>Never deletes a photo without asking you first, every single time.</li>
-    </ul>
-
-    <h2>How it handles your data</h2>
-    <p>There is no account and no sign-up. A screenshot is shrunk on your phone and sent to our server and Google's Gemini AI to be read, then discarded — our servers never keep a copy. What comes back is stored on your phone only. The full detail is in the <a href="privacy.html">Privacy Policy</a>.</p>
-
-    <h2>Need help?</h2>
-    <p>Restoring a purchase, cancelling a subscription, or asking us to delete what we hold: the <a href="support.html">Support page</a> covers it, or write to <a href="mailto:eaeltayb@gmail.com">eaeltayb@gmail.com</a>.</p>
-  </main>
-
-  <footer class="foot">
-    <nav>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Use</a>
-      <a href="privacy-ar.html" lang="ar">سياسة الخصوصية</a>
-      <a href="support.html">Support</a>
-      <a href="mailto:eaeltayb@gmail.com">Contact</a>
+    <nav class="langbar" aria-label="Language">
+      <span aria-current="page">English</span>
+      <a href="ar/" hreflang="ar" lang="ar" dir="rtl" data-lang="ar">العربية</a>
+      <a href="es/" hreflang="es" lang="es" data-lang="es">Español</a>
+      <a href="pt/" hreflang="pt-BR" lang="pt-BR" data-lang="pt">Português</a>
+      <a href="fr/" hreflang="fr" lang="fr" data-lang="fr">Français</a>
     </nav>
-    <p>Sift is developed and published by Eltayeb Mohammed.</p>
-  </footer>
+  </div>
+  <h1>Your screenshots, sorted.</h1>
+  <p class="lede">Sift reads the screenshots already on your phone — the tickets, the addresses, the Wi-Fi passwords, the things you meant to buy — and turns each one into something you can act on. What it reads stays on your phone.</p>
+</header>
+
+<main>
+
+<div class="actions">
+  <a class="btn primary" href="privacy.html">Privacy Policy</a>
+  <a class="btn" href="terms.html">Terms of Use</a>
+  <a class="btn" href="support.html">Support</a>
+</div>
+
+<h2>What it does</h2>
+<ul>
+  <li>Finds the screenshots in your photo library and leaves your camera photos alone.</li>
+  <li>Reads each one and gives you a title, a summary and the useful details — a date, a place, a price, a link, a code.</li>
+  <li>Offers one action per screenshot: add to calendar, save the place, track the product, set a reminder, keep a note, or delete the picture.</li>
+  <li>Never deletes a photo without asking you first, every single time.</li>
+</ul>
+
+<h2>How it handles your data</h2>
+<p>There is no account and no sign-up. A screenshot is shrunk on your phone and sent to our server and Google's Gemini AI to be read, then discarded — our servers never keep a copy. What comes back is stored on your phone only. The full detail is in the <a href="privacy.html">Privacy Policy</a>.</p>
+
+<h2>Works in your language</h2>
+<p>English, Arabic, Spanish, Portuguese and French, with full right-to-left support for Arabic. Sift writes titles and summaries in the language you choose, whatever language the screenshot is in.</p>
+
+<h2>Need help?</h2>
+<p>Restoring a purchase, cancelling a subscription, or asking us to delete what we hold: the <a href="support.html">Support page</a> covers it, or write to <a href="mailto:eaeltayb@gmail.com">eaeltayb@gmail.com</a>.</p>
+
+</main>
+
+<footer class="foot">
+  <nav aria-label="Site">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Use</a>
+    <a href="support.html">Support</a>
+    <a href="mailto:eaeltayb@gmail.com">Contact</a>
+  </nav>
+  <div class="langbar" role="group" aria-label="Language">
+    <span aria-current="page">English</span>
+    <a href="ar/" hreflang="ar" lang="ar" dir="rtl" data-lang="ar">العربية</a>
+    <a href="es/" hreflang="es" lang="es" data-lang="es">Español</a>
+    <a href="pt/" hreflang="pt-BR" lang="pt-BR" data-lang="pt">Português</a>
+    <a href="fr/" hreflang="fr" lang="fr" data-lang="fr">Français</a>
+  </div>
+  <p>Sift is developed and published by Eltayeb Mohammed.</p>
+</footer>
 
 </div>
 </body>

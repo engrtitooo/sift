@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sift — Política de privacidad</title>
+<meta name="description" content="Cómo trata Sift tus capturas de pantalla: las lee Gemini, la IA de Google, a través de nuestro servidor, y nunca se guardan en nuestros servidores. Redactada para coincidir con lo que la app hace realmente.">
+<meta name="theme-color" content="#F25C6B">
+<link rel="canonical" href="https://engrtitooo.github.io/sift/es/privacy.html">
+<link rel="alternate" hreflang="en" href="https://engrtitooo.github.io/sift/privacy.html">
+<link rel="alternate" hreflang="ar" href="https://engrtitooo.github.io/sift/ar/privacy.html">
+<link rel="alternate" hreflang="es" href="https://engrtitooo.github.io/sift/es/privacy.html">
+<link rel="alternate" hreflang="pt-BR" href="https://engrtitooo.github.io/sift/pt/privacy.html">
+<link rel="alternate" hreflang="fr" href="https://engrtitooo.github.io/sift/fr/privacy.html">
+<link rel="alternate" hreflang="x-default" href="https://engrtitooo.github.io/sift/privacy.html">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/lang.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <div class="topbar">
+    <a class="brand" href="./">
+      <span class="mark" aria-hidden="true">S</span>
+      <span class="brand-name">Sift</span>
+    </a>
+    <nav class="langbar" aria-label="Idioma">
+      <a href="../privacy.html" hreflang="en" lang="en" data-lang="en">English</a>
+      <a href="../ar/privacy.html" hreflang="ar" lang="ar" dir="rtl" data-lang="ar">العربية</a>
+      <span aria-current="page">Español</span>
+      <a href="../pt/privacy.html" hreflang="pt-BR" lang="pt-BR" data-lang="pt">Português</a>
+      <a href="../fr/privacy.html" hreflang="fr" lang="fr" data-lang="fr">Français</a>
+    </nav>
+  </div>
+  <p class="eyebrow">Legal</p>
+  <h1>Política de privacidad</h1>
+  <p class="dateline">Vigente a partir del 26 de septiembre de 2026</p>
+  <p class="xlate">Esta es una traducción. Si hay alguna diferencia, prevalece la <a href="../privacy.html" hreflang="en">versión en inglés</a>.</p>
+</header>
+
+<main>
+
+<section class="card">
+  <h2>La versión corta</h2>
+  <ul>
+    <li><strong>No hay cuenta</strong>. Ni nombre, ni correo electrónico, ni número de teléfono, ni contraseña.</li>
+    <li>Una captura de pantalla se reduce en tu teléfono y se envía a nuestro servidor, que la pasa a Gemini, la IA de Google, para que la lea. <strong>Nuestros servidores nunca la guardan</strong>: se descarta en el momento en que vuelve la respuesta.</li>
+    <li>Usamos la API <strong>de pago</strong> de Gemini de Google. Según sus términos, Google <strong>no usa tus capturas ni las respuestas para entrenar ni mejorar sus modelos</strong>.</li>
+    <li>Lo que Sift leyó —un título, un resumen, unos pocos campos extraídos— se guarda <strong>solo en tu teléfono</strong>.</li>
+    <li>Lo único que nuestro servidor guarda sobre ti es un identificador aleatorio y un recuento de cuántas capturas se han leído para ti.</li>
+    <li><strong>No hay ningún SDK de analítica, ningún identificador publicitario ni rastreo de ningún tipo</strong>, ni entre apps ni de ninguna otra forma. El único dato de diagnóstico que sale de tu teléfono es el mensaje de error de inicio que se envía a Expo, descrito en la sección 5.</li>
+    <li>Sift <strong>nunca elimina una foto sin preguntarte antes</strong>, todas y cada una de las veces.</li>
+    <li>No vendemos tu información personal y nunca lo hemos hecho.</li>
+  </ul>
+</section>
+
+<h2>Quiénes somos</h2>
+<p>Sift lo desarrolla y publica <strong>Eltayeb Mohammed</strong>. En esta política, «nosotros» se refiere al editor; «Sift», a la app móvil. A efectos del RGPD (Reglamento General de Protección de Datos de la UE), somos el responsable del tratamiento de la pequeña cantidad de datos que se describe a continuación.</p>
+<p>Contacto para cualquier asunto de esta política, incluida una solicitud para eliminar tus datos: <a href="mailto:eaeltayb@gmail.com">eaeltayb@gmail.com</a></p>
+
+<h2>1. Qué recopilamos</h2>
+<p>Nunca te pedimos información personal, y en la app no hay dónde ingresarla. Esta es la lista completa de lo que existe.</p>
+
+<h3>Un identificador anónimo</h3>
+<p>Cuando Sift se inicia por primera vez con conexión a la red —o, a más tardar, la primera vez que necesita leer una captura— crea una sesión anónima con nuestro proveedor de backend, Supabase. Esa sesión es un identificador aleatorio —un UUID como <code>3f2a…</code>— sin ningún nombre, correo electrónico ni contraseña asociados. Se guarda en tu teléfono y es el único identificador que tenemos sobre ti. Todos los registros del servidor que te conciernen están vinculados a él y a nada más.</p>
+<p>Puedes ver tu identificador en cualquier momento en <strong>Ajustes → Privacidad</strong> dentro de la app, y copiarlo con un toque. Se muestra ahí para que una solicitud de eliminación sea algo que realmente puedas hacer; consulta la sección 6.</p>
+
+<h3>El contenido de la captura, mientras se lee</h3>
+<p>Cuando pides que se lea una captura, la imagen redimensionada y el idioma en el que quieres la respuesta se envían a nuestro servidor, que pasa la imagen a la API de Gemini de Google. Esa es toda la solicitud. La imagen existe solo en la memoria de esa única solicitud. La sección 2 detalla cada paso. No se envía nada hasta que lo hayas aceptado en la app, en la pantalla que lo explica antes de que se lea la primera captura.</p>
+
+<h3>Cuántas capturas hay en tu biblioteca — solo si compras un Análisis profundo</h3>
+<p>Un paquete de Análisis profundo (Deep Scan) se dimensiona según tu biblioteca, y solo tu teléfono puede saber qué tan grande es. Por eso, después de que compras uno, cuando el análisis recorre tu biblioteca por primera vez, la app le comunica a nuestro servidor un único número, una sola vez: cuántas capturas encontró. Ese número, redondeado hacia arriba hasta un mínimo de 3000 y con un máximo de 10 000, se convierte en el tamaño de tu paquete y se guarda junto con la compra. Nada más sobre tu biblioteca lo acompaña: ni nombres de archivo, ni fechas, ni contenido. Si nunca compras un Análisis profundo, este número nunca se envía.</p>
+
+<h3>Recuentos, para el cupo gratuito y los planes de pago</h3>
+<p>Cuántas capturas se han leído para tu identificador, en qué plan está y las marcas de tiempo de las solicitudes recientes. Eso es lo que describe en detalle la sección 4.</p>
+
+<h3>Lo que no recopilamos</h3>
+<ul class="never">
+  <li>Tu nombre, correo electrónico, número de teléfono ni credenciales de ninguna cuenta.</li>
+  <li>Tu ubicación. Sift nunca solicita acceso a la ubicación y no contiene código de ubicación.</li>
+  <li>Las coordenadas GPS, los metadatos EXIF, los nombres de archivo ni las fechas de creación asociados a tus fotos. Antes de enviar una captura, se vuelve a codificar como un JPEG nuevo, que no conserva los metadatos EXIF del archivo original, incluida la ubicación. El nombre y la fecha del archivo original nunca salen del teléfono.</li>
+  <li>Tus contactos, tus eventos de calendario existentes, tu navegación ni nada de lo que hagas en otras apps.</li>
+  <li>Ningún identificador publicitario (IDFA / GAID). Sift no solicita el permiso de Transparencia de rastreo de apps (ATT), porque no tiene nada con qué rastrear.</li>
+  <li>Las fotos de tu cámara. Sift filtra la biblioteca para quedarse solo con las capturas de pantalla y nunca envía nada más.</li>
+</ul>
+
+<h2>2. Cómo se procesa una captura, exactamente</h2>
+<ol class="steps">
+  <li><strong>En tu teléfono.</strong> Con tu permiso, Sift enumera las imágenes de tu biblioteca de fotos y selecciona las que son capturas de pantalla: por el álbum «Capturas de pantalla», por la marca de captura que establece el propio sistema operativo, por el nombre de archivo o por una coincidencia exacta con una resolución de pantalla de teléfono conocida. No se selecciona nada más.</li>
+  <li><strong>En tu teléfono.</strong> La captura se redimensiona a 512 píxeles de ancho y se vuelve a comprimir como JPEG. Tu foto original nunca se modifica. El JPEG recodificado es un archivo nuevo, que no conserva los metadatos EXIF del archivo original, incluida la ubicación.</li>
+  <li><strong>Al salir de tu teléfono.</strong> Esa copia pequeña se codifica como texto y se coloca en una solicitud HTTPS cifrada junto con una sola cosa más: el idioma en el que quieres la respuesta. La solicitud se firma con tu sesión anónima para que nuestro servidor sepa a qué cupo cargarla. En una solicitud pueden viajar hasta 8 capturas; la app envía 6.</li>
+  <li><strong>En nuestro servidor.</strong> Una Supabase Edge Function comprueba que la sesión sea válida, verifica tu límite de frecuencia, reserva las lecturas de tu cupo y reenvía los datos de la imagen a la API de Gemini de Google (modelo <code>gemini-3.1-flash-lite</code>). <strong>No se envía a Google ningún identificador tuyo</strong>: ni tu ID de usuario, ni un ID de dispositivo, ni un token derivado de la IP. Google ve la imagen, las instrucciones y el idioma de salida.</li>
+  <li><strong>De vuelta desde Google.</strong> El modelo devuelve una descripción en JSON. Nuestro servidor comprueba que esté bien formada y devuelve a tu teléfono solo ese JSON validado. La respuesta sin procesar del modelo nunca sale de la función.</li>
+  <li><strong>La imagen desaparece de nuestro servidor.</strong> Nuestro servidor nunca escribe los datos de la imagen en una base de datos, un bucket de almacenamiento, un archivo ni un registro. Solo existen durante la vida de esa única solicitud y se descartan cuando la solicitud termina. Si la llamada al modelo falla, las lecturas se devuelven y no se conserva nada. Cómo trata Google la imagen que recibe se rige por los Términos de la API de Gemini, enlazados en la sección 5.</li>
+  <li><strong>En tu teléfono.</strong> El resultado se guarda en el almacenamiento privado de la propia app, y en ningún otro lugar.</li>
+</ol>
+
+<p>Por cada captura, lo que vuelve es: un tipo (evento, lugar, producto, dato, recibo o descarte), una puntuación de confianza, un título corto, un resumen de una línea, el idioma del texto de la imagen, hasta 500 caracteres del texto que Sift pudo leer —esto es lo que hace que funcione la búsqueda— y lo que haya encontrado de fecha, nombre de lugar, dirección, precio, enlace, código o contraseña de Wi-Fi, y nombre del comercio.</p>
+
+<div class="note">
+  <p><strong>Todo eso se guarda en tu teléfono y en ningún otro lugar.</strong> Nuestro servidor no tiene ninguna tabla para los resultados de clasificación. Te reenvía la respuesta del modelo y la olvida.</p>
+</div>
+
+<h2>3. Lo que se queda en tu teléfono</h2>
+<p>Sift guarda todo lo siguiente en el almacenamiento privado de la propia app en tu dispositivo. No hay base de datos, ni caché de archivos, ni copia de ninguna imagen; todo son pequeños fragmentos de texto.</p>
+<ul>
+  <li><strong>Resultados de clasificación</strong>: el título, el resumen, los campos extraídos y el texto legible descritos arriba, una entrada por captura.</li>
+  <li><strong>Tu decisión sobre cada elemento</strong>: si actuaste sobre él, lo omitiste, lo conservaste o lo eliminaste.</li>
+  <li><strong>Los elementos que guardaste explícitamente</strong>: lugares, productos y notas, además del identificador de cualquier recordatorio que hayas programado junto con ellos.</li>
+  <li><strong>Un Análisis profundo en curso</strong>: la lista de ID de las capturas de esa pasada, para poder reanudarla si se cierra la app. Caduca a los 14 días.</li>
+  <li><strong>Ajustes</strong>: si ya viste la introducción, el idioma que elegiste en lugar del del dispositivo, la última cifra de uso que informó el servidor y si ya se mostró la oferta del primer uso.</li>
+  <li><strong>El token de tu sesión anónima</strong>, para que el mismo cupo te acompañe entre reinicios.</li>
+</ul>
+<p>Quitar un elemento de tu biblioteca elimina lo que Sift leyó; tu foto queda intacta. «Volver a escanear la biblioteca» borra tus decisiones. Desinstalar Sift lo elimina todo de tu teléfono.</p>
+
+<h2>4. Lo que guarda nuestro servidor</h2>
+<p>Tres tablas. Esta es la lista completa.</p>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Tabla</th><th>Qué contiene</th><th>Por qué existe</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><code>usage_counts</code></td>
+      <td>Tu identificador anónimo; las lecturas usadas en total y en este mes; cuándo se reinicia el mes; tu nivel (gratuito o pro); si estás en un periodo de prueba; las lecturas gratuitas otorgadas; las lecturas de Análisis profundo restantes y otorgadas.</td>
+      <td>Para aplicar el cupo gratuito y los límites de pago. Esto tiene que estar en un servidor: en el teléfono, simplemente podría editarse.</td>
+    </tr>
+    <tr>
+      <td><code>rate_limit_events</code></td>
+      <td>Tu identificador anónimo y una marca de tiempo. Nada más.</td>
+      <td>Para impedir que un solo dispositivo envíe más de 60 solicitudes por minuto.</td>
+    </tr>
+    <tr>
+      <td><code>deep_scan_grants</code></td>
+      <td>El ID de transacción de la tienda de una compra de Análisis profundo, tu identificador anónimo, cuántas lecturas otorgó —que es el tamaño de tu biblioteca de capturas, entre 3000 y 10 000— y cuándo.</td>
+      <td>Para que un paquete que pagaste se otorgue exactamente una vez y nunca pueda otorgarse dos veces.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p>En nuestro servidor no se guarda ninguna captura, ninguna imagen, ningún texto extraído ni ningún resultado de clasificación, en ninguna tabla, bucket ni archivo.</p>
+
+<h3>Registros del servidor</h3>
+<p>Nuestro proveedor de backend conserva registros operativos de las funciones que se ejecutan. Para la función que clasifica las capturas, esos registros anotan el número de imágenes de una solicitud, el tamaño de la solicitud en megabytes, el idioma de salida solicitado y cifras de memoria: <strong>ningún dato de imagen, ningún texto extraído y ningún identificador de usuario</strong>. Las dos funciones de facturación sí registran el identificador anónimo, porque una compra que no se logra otorgar tiene que poder rastrearse hasta la persona a la que le falló. Supabase también conserva sus propios registros a nivel de plataforma, que incluyen la dirección de red desde la que llegó una solicitud, conforme a <a href="https://supabase.com/privacy" rel="noopener">su propia política de privacidad</a>.</p>
+
+<h2>5. Terceros que tratan datos por nosotros</h2>
+<p>Sift usa cinco servicios externos. Nada más. No hay proveedor de analítica, ni reportador de fallos, ni red publicitaria, ni intermediario de datos en la app ni en nuestro servidor. El único dato de diagnóstico que sale de tu teléfono se describe en la fila de Expo más abajo: el mensaje de error de un inicio fallido, enviado con la siguiente comprobación de actualizaciones.</p>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Servicio</th><th>Qué recibe</th><th>Su política</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>API de Google Gemini</strong><br>(Google LLC)</td>
+      <td>La captura redimensionada, las instrucciones de lectura y el idioma en el que responder. No se adjunta ningún identificador de ningún tipo. Google no recibe tu ID anónimo, ni un ID de dispositivo, ni nada que vincule una solicitud con otra. Usamos el nivel de pago de la API de Gemini: según sus términos, Google no usa las imágenes ni las respuestas para entrenar ni mejorar sus productos, y solo las conserva durante un periodo limitado para detectar abusos y cumplir obligaciones legales.</td>
+      <td><a href="https://policies.google.com/privacy" rel="noopener">Política de privacidad de Google</a> · <a href="https://ai.google.dev/gemini-api/terms" rel="noopener">Términos de la API de Gemini</a></td>
+    </tr>
+    <tr>
+      <td><strong>Supabase</strong><br>(Supabase, Inc.)</td>
+      <td>Aloja nuestra autenticación anónima, las tres tablas anteriores y las funciones que se ejecutan. Gestiona cada solicitud, así que ve los datos de la captura en tránsito mientras se atiende una solicitud, y la dirección de red desde la que llegó la solicitud.</td>
+      <td><a href="https://supabase.com/privacy" rel="noopener">Política de privacidad de Supabase</a></td>
+    </tr>
+    <tr>
+      <td><strong>RevenueCat</strong><br>(RevenueCat, Inc.)</td>
+      <td>Gestiona las suscripciones y el paquete de Análisis profundo. La configuramos con tu identificador anónimo de Supabase como su App User ID, para que una compra pueda asociarse al cupo correcto. También recibe datos de compra y de recibos del App Store, y su SDK recopila información del dispositivo y de la app según se describe en su política. Cuando se muestra la pantalla de suscripción, la app le pasa el número de capturas de tu biblioteca y cuántas están sin leer, para que pueda decirte cuánto valdría un paquete para ti en lugar de citar una cifra genérica.</td>
+      <td><a href="https://www.revenuecat.com/privacy" rel="noopener">Política de privacidad de RevenueCat</a></td>
+    </tr>
+    <tr>
+      <td><strong>Apple</strong><br>(Apple Inc.)</td>
+      <td>Cobra el pago y mantiene la suscripción. Nunca vemos tus datos de pago, tu ID de Apple ni tu nombre: el App Store se encarga de todo y solo nos dice que una compra es válida.</td>
+      <td><a href="https://www.apple.com/legal/privacy/" rel="noopener">Política de privacidad de Apple</a></td>
+    </tr>
+    <tr>
+      <td><strong>Expo (EAS Update)</strong><br>(650 Industries, Inc.)</td>
+      <td>Cuando Sift se inicia, pregunta al servidor de actualizaciones de Expo si hay disponible una versión más reciente del código de la app. Esa solicitud lleva un ID de instalación aleatorio creado por la biblioteca de actualizaciones —no tu identificador de Sift— junto con la plataforma, la versión de runtime y el canal de actualización de la app, y los ID de la actualización instalada. Si la app no logró iniciarse la vez anterior, la solicitud también lleva ese mensaje de error, de 1024 caracteres como máximo. Expo ve la dirección de red desde la que llegó la solicitud. Nunca se envía a Expo ninguna captura, texto extraído ni recuento de uso.</td>
+      <td><a href="https://expo.dev/privacy" rel="noopener">Política de privacidad de Expo</a></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p>No tenemos ningún otro encargado del tratamiento, y no vendemos ni compartimos tus datos con nadie con fines de publicidad, elaboración de perfiles ni ningún otro fin.</p>
+
+<h2>6. Conservación y eliminación</h2>
+<ul>
+  <li><strong>Capturas e imágenes:</strong> no se conservan en nuestros servidores. Se descartan al final de la solicitud que las transportó. Como usamos la API de pago de Gemini, Google no las usa para entrenar sus modelos; puede conservarlas durante un periodo limitado únicamente para detectar abusos y cumplir obligaciones legales, conforme a los Términos de la API de Gemini (sección 5).</li>
+  <li><strong>Todo lo que Sift leyó:</strong> se conserva en tu teléfono mientras tú lo conserves. Elimina un elemento en la app para quitarlo; desinstala Sift para quitarlo todo.</li>
+  <li><strong>Marcas de tiempo del límite de frecuencia:</strong> solo se lee una ventana de un minuto, así que las filas más antiguas no tienen ningún otro uso y se eliminan en una limpieza rutinaria. Cada una contiene únicamente tu identificador y una hora.</li>
+  <li><strong>Recuentos de uso y otorgamientos de compras:</strong> se conservan mientras exista tu identificador anónimo, porque son lo que impide que un paquete pagado se otorgue dos veces y lo que lleva tus lecturas restantes. Son números vinculados a un ID aleatorio: no hay nada en ellos que identifique a una persona.</li>
+</ul>
+
+<h3>Cómo pedir que se eliminen tus datos</h3>
+<p>Como no hay cuenta, no tenemos forma de encontrar tu registro a menos que nos digas cuál es. Así que:</p>
+<ol class="steps">
+  <li>Abre Sift y ve a <strong>Ajustes → Privacidad</strong>. Toca tu identificador anónimo para copiarlo.</li>
+  <li>Envíalo por correo a <a href="mailto:eaeltayb@gmail.com">eaeltayb@gmail.com</a> e indica que quieres que se elimine.</li>
+  <li>Eliminamos las filas vinculadas a ese identificador —tus recuentos de uso, marcas de tiempo del límite de frecuencia y otorgamientos de compras— y el propio registro de autenticación anónima, en un plazo de 30 días, y te lo confirmamos respondiendo a tu correo.</li>
+</ol>
+<p>Eliminar el registro del servidor no elimina lo que hay en tu teléfono, ni cancela una suscripción. Desinstalar la app resuelve lo primero; la <a href="support.html">página de soporte</a> explica lo segundo. Si eliminas tu registro del servidor mientras a un paquete de Análisis profundo todavía le quedan lecturas, esas lecturas se pierden con él.</p>
+
+<h2>7. Permisos, y por qué se necesita cada uno</h2>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Permiso</th><th>Cuándo se solicita</th><th>Para qué se usa</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Fotos</strong><br>(acceso de lectura)</td>
+      <td>Cuando permites por primera vez que Sift vea tu biblioteca.</td>
+      <td>Para encontrar las capturas de pantalla en tu biblioteca de fotos y —solo cuando lo confirmas— para eliminar una. Sift solicita acceso solo a imágenes, nunca a videos, y nunca pide los metadatos de ubicación de tus fotos. Si concedes acceso limitado, Sift solo ve las fotos que elegiste.</td>
+    </tr>
+    <tr>
+      <td><strong>Calendario</strong></td>
+      <td>En el momento en que tocas «Añadir al calendario» en una captura, nunca antes.</td>
+      <td>Para escribir un evento, con el título, la fecha, el lugar y el enlace de esa captura. Sift no lee tus eventos existentes y nunca cambia ni elimina nada que ya esté en tu calendario.</td>
+    </tr>
+    <tr>
+      <td><strong>Notificaciones</strong></td>
+      <td>En el momento en que programas un recordatorio, nunca al abrir la app.</td>
+      <td>Para programar un recordatorio local en tu teléfono. Son alarmas que tu teléfono programa para sí mismo: Sift no tiene servidor de notificaciones push, no registra ningún token push y no puede enviarte nada.</td>
+    </tr>
+    <tr>
+      <td><strong>Ubicación</strong></td>
+      <td><strong>Nunca se solicita.</strong></td>
+      <td>Sift no usa la ubicación. Cuando una captura contiene una dirección, al tocarla se abre tu app de mapas con esa dirección como búsqueda: es tu app de mapas, no Sift, la que decide qué hacer con tu ubicación a partir de ahí.</td>
+    </tr>
+    <tr>
+      <td><strong>Rastreo (ATT)</strong></td>
+      <td><strong>Nunca se solicita.</strong></td>
+      <td>Sift no te rastrea entre apps ni sitios web y no tiene identificador publicitario, así que no hay nada para lo que pedir permiso.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p>Puedes cambiar o retirar cualquiera de estos permisos en cualquier momento en la Configuración de tu teléfono. Sift sigue funcionando sin ellos; simplemente no puede hacer lo que los necesitaba.</p>
+
+<h3>Eliminar fotos</h3>
+<p>Sift puede eliminar una captura de tu biblioteca de fotos, y solo lo hace cuando tocas una acción de eliminar y luego la confirmas en el propio cuadro de diálogo de tu teléfono. Esa confirmación aparece todas y cada una de las veces; no hay ningún ajuste para desactivarla, y ninguna otra acción de la app puede llegar a tus fotos. Eliminar una foto no se puede deshacer desde Sift; en iOS pasa al álbum Eliminado.</p>
+
+<h2>8. Privacidad de los niños</h2>
+<p>Sift no se dirige a niños menores de 13 años, y no recopilamos a sabiendas información personal de ellos. Como la app no tiene cuenta, ni registro, ni forma de ingresar datos personales, no hay nada que un niño pueda enviar. Si crees que un niño usó Sift y quieres que se elimine el registro anónimo asociado, sigue los pasos de eliminación de la sección 6 y lo eliminaremos.</p>
+
+<h2>9. Tus derechos</h2>
+<p>Según dónde vivas, puedes tener derecho a acceder a tus datos, corregirlos, eliminarlos o exportarlos, a oponerte a su tratamiento o a limitarlo, y a presentar una reclamación ante una autoridad de protección de datos. En la UE y el Reino Unido son derechos del RGPD; en California, derechos de la CCPA/CPRA; en Brasil, derechos de la LGPD.</p>
+<p>En la práctica, ejercerlos es rápido, porque hay muy poco sobre lo que ejercerlos:</p>
+<ul>
+  <li><strong>Acceso / exportación:</strong> todo lo que Sift leyó ya está en tu teléfono, visible en la app. El servidor solo guarda los contadores de la sección 4. Escríbenos con tu identificador y te enviaremos exactamente lo que contienen esas filas.</li>
+  <li><strong>Rectificación:</strong> los datos del servidor son contadores; si un recuento está mal, dínoslo y lo corregiremos.</li>
+  <li><strong>Eliminación:</strong> sigue la sección 6.</li>
+  <li><strong>Oposición / limitación:</strong> deja de pedir que se lean capturas, o desinstala la app. No se realiza ningún tratamiento salvo cuando tú lo pides.</li>
+  <li><strong>Venta de información personal:</strong> no la vendemos, y no la compartimos para publicidad conductual entre contextos. No hay ninguna opción de exclusión que ofrecer, porque no hay nada de lo que excluirse.</li>
+</ul>
+<p>Nuestra base legal según el RGPD es la ejecución de un contrato —nos pediste que leyéramos una captura, así que la leímos— y nuestro interés legítimo en hacer cumplir los límites de uso y prevenir abusos. Los datos se tratan en los Estados Unidos y en otros países donde operan nuestros encargados del tratamiento.</p>
+
+<h2>10. Seguridad</h2>
+<p>Todo lo que viaja entre tu teléfono y nuestro servidor, y entre nuestro servidor y Google, lo hace mediante HTTPS. Nuestra clave de API para el modelo de Google existe solo como secreto del lado del servidor y nunca está en la app. Los registros del servidor están protegidos con seguridad a nivel de fila, de modo que un identificador anónimo no puede leer ni cambiar los de otro, y los contadores que determinan tu cupo solo los puede escribir el servidor, nunca un teléfono. Ningún sistema es perfectamente seguro, pero la protección más eficaz aquí es estructural: no guardamos tus capturas, así que no existe ningún almacén de ellas que se pueda vulnerar.</p>
+
+<h2>11. Cambios en esta política</h2>
+<p>Si cambiamos cómo trata Sift los datos, actualizaremos esta página y cambiaremos la fecha de vigencia que aparece arriba. Los cambios que afecten de forma sustancial a lo que sale de tu teléfono se anunciarán en la app antes de que entren en vigor. La versión vigente está siempre en esta dirección.</p>
+
+<h2>12. Contacto</h2>
+<p>Eltayeb Mohammed<br>
+<a href="mailto:eaeltayb@gmail.com">eaeltayb@gmail.com</a></p>
+<p>Escribe en inglés o en árabe. Respondemos cada correo sobre esta política y cada solicitud de eliminación.</p>
+
+</main>
+
+<footer class="foot">
+  <nav aria-label="Sitio">
+    <a href="./">Inicio</a>
+    <a href="terms.html">Términos de uso</a>
+    <a href="support.html">Soporte</a>
+    <a href="mailto:eaeltayb@gmail.com">Contacto</a>
+  </nav>
+  <div class="langbar" role="group" aria-label="Idioma">
+    <a href="../privacy.html" hreflang="en" lang="en" data-lang="en">English</a>
+    <a href="../ar/privacy.html" hreflang="ar" lang="ar" dir="rtl" data-lang="ar">العربية</a>
+    <span aria-current="page">Español</span>
+    <a href="../pt/privacy.html" hreflang="pt-BR" lang="pt-BR" data-lang="pt">Português</a>
+    <a href="../fr/privacy.html" hreflang="fr" lang="fr" data-lang="fr">Français</a>
+  </div>
+  <p>Sift — Eltayeb Mohammed. Vigente a partir del 26 de septiembre de 2026.</p>
+</footer>
+
+</div>
+</body>
+</html>
